@@ -18,7 +18,7 @@ jobs:
       - name: Authenticate into Google Cloud Platform
         uses: google-github-actions/auth@v0
         with:
-          workload_identity_provider: ${{ secrets.GCLOUD_WORKLOAD }}
+          #workload_identity_provider: ${{ secrets.GCLOUD_WORKLOAD }}
           service_account: ${{ secrets.GCLOUD_EMAIL }}
           credentials_json: ${{ secrets.GCLOUD_AUTH }}
 
