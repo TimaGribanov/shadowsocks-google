@@ -23,11 +23,11 @@ echo ${QR_Path}
 
 export DOMAIN="$AppName"
 
-cat /conf/shadowsocks_config.json > /etc/shadowsocks-libev/config.json
+bash /conf/shadowsocks_config.json.sh > /etc/shadowsocks-libev/config.json
 echo /etc/shadowsocks-libev/config.json
 cat /etc/shadowsocks-libev/config.json
 
-cat /conf/default.conf > /etc/nginx/conf.d/ss.conf
+bash /conf/default.conf > /etc/nginx/conf.d/ss.conf
 echo /etc/nginx/conf.d/ss.conf
 cat /etc/nginx/conf.d/ss.conf
 

@@ -1,3 +1,6 @@
+#!/bin/bash
+# Fast_open must be false on heroku
+cat <<EOF
 {
     "server":"127.0.0.1",
     "server_port":"2333",
@@ -11,3 +14,4 @@
     "plugin": "v2ray-plugin",
     "plugin_opts":"server;path=/${V2_Path}"
 }
+EOF
