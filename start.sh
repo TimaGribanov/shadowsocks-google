@@ -23,7 +23,7 @@ echo ${QR_Path}
 
 export DOMAIN="$AppName"
 
-bash /conf/shadowsocks_config.json.sh > /etc/shadowsocks-libev/config.json
+bash /conf/shadowsocks_conf.json.sh > /etc/shadowsocks-libev/config.json
 echo /etc/shadowsocks-libev/config.json
 cat /etc/shadowsocks-libev/config.json
 
