@@ -14,7 +14,9 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build . --tag ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}
+          docker build . --tag ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image:google-tag
+          docker tag shadowsocks-image ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image:google-tag
+      
       - name: Authenticate into Google Cloud Platform
         uses: google-github-actions/auth@v0
         with:
@@ -26,7 +28,6 @@ jobs:
 
       - name: Push image to Google Cloud Artifact Registry
         run: |
-          docker tag shadowsocks-image ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image:google-tag
           docker push ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image:google-tag
 
       - name: Install beta commands and deploy on cloud run
