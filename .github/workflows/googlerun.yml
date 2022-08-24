@@ -25,9 +25,9 @@ jobs:
         run: "gcloud auth configure-docker ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev --quiet"
 
       - name: Push image to Google Cloud Artifact Registry
-        run: docker push ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image
+        run: docker push ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks_image
 
       - name: Install beta commands and deploy on cloud run
         run: |
           gcloud components install beta --quiet
-          gcloud beta run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image --project ${{ secrets.GCLOUD_PROJECT }} --region ${{ secrets.GCLOUD_LOCATION }} --platform managed
+          gcloud beta run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks_image --project ${{ secrets.GCLOUD_PROJECT }} --region ${{ secrets.GCLOUD_LOCATION }} --platform managed
