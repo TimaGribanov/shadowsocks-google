@@ -36,6 +36,5 @@ jobs:
           curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-399.0.0-linux-x86_64.tar.gz
           tar -xf google-cloud-cli-399.0.0-linux-x86_64.tar.gz
           ./google-cloud-sdk/install.sh
-          ./google-cloud-sdk/bin/gcloud init
           ./google-cloud-sdk/bin/gcloud components install beta --quiet
           ./google-cloud-sdk/bin/gcloud beta run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image --project ${{ secrets.GCLOUD_PROJECT }} --region ${{ secrets.GCLOUD_LOCATION }} --platform managed
