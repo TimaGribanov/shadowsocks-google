@@ -32,6 +32,9 @@ jobs:
 
       - name: Install beta commands and deploy on cloud run
         run: |
-          sudo apt-get install google-cloud-sdk
+          sudo apt-get remove google-cloud-sdk
+          curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-399.0.0-linux-x86_64.tar.gz
+          tar -xf google-cloud-cli-399.0.0-linux-x86.tar.gz
+          ./google-cloud-sdk/install.sh
           gcloud components install beta --quiet
           gcloud beta run deploy ${{ secrets.GCLOUD_APP_NAME }} --quiet --image ${{ secrets.GCLOUD_LOCATION }}-docker.pkg.dev/${{ secrets.GCLOUD_PROJECT }}/${{ secrets.GCLOUD_APP_NAME }}/shadowsocks-image --project ${{ secrets.GCLOUD_PROJECT }} --region ${{ secrets.GCLOUD_LOCATION }} --platform managed
